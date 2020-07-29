@@ -3,16 +3,20 @@
 
 ## URL Acess
 http://goodunionflix.vercel.app
+
 Projeto utilizado para armazenar as aulas de react da Alura.
 
 Local do APP: /good-union-flix
 
 https://fonts.google.com/
+
 https://pt-br.reactjs.org/docs
+
 https://www.alura.com.br/imersao-react
+
 Criar fontes/logo: https://fontmeme.com/pt/
 
-## dados do projeto
+## Dados do projeto
  * contém arquivo figma + logo.
 https://www.figma.com/
 
@@ -26,4 +30,10 @@ IntelliCode
     https://styled-components.com/
     npm install styled-components
 
-    * https://reactrouter.com/
+    * Rotas:  https://reactrouter.com/
+
+    * Slider:  https://react-slick.neostack.com/
+        Para utilizar a lib, necessário adicionar 2 arquivos na pasta public do projeto
+        Alterar ./public/index.html
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css">
