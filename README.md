@@ -1,6 +1,8 @@
 # Imersão React Alura
 
-Projeto utilizado para armazenar as aulas de react da Alura.  
+Projeto utilizado para armazenar as aulas de react da Alura.
+
+Local do APP: /good-union-flix
 
 https://fonts.google.com/
 https://pt-br.reactjs.org/docs

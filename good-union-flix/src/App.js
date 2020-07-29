@@ -4,8 +4,11 @@ import dadosIniciais from './data/dados_iniciais.json'
 import BannerMain from './components/BannerMain'
 import Carousel from './components/Carousel'
 import Footer from './components/Footer'
+import styled from 'styled-components'
 
-
+const AppWrapper = styled.div`
+background: var(--grayDark);
+`;
 
 //este é um component APP que é inetado lá no index.js
 // na pasta public temos o arquivo index.html
@@ -14,7 +17,7 @@ function App() {
   return (
     //no react temos o js e nele temos o html, vai um pouco contra oq ja existe hj
     // aqui retornamos o JSX. JavaScript XML
-    <div className="App">
+    <AppWrapper>
       <Menu />
       <BannerMain
         videoTitle={dadosIniciais.categorias[0].videos[0].titulo}
@@ -33,23 +36,23 @@ function App() {
 
       <Carousel
         category={dadosIniciais.categorias[2]}
-      />      
+      />
 
       <Carousel
         category={dadosIniciais.categorias[3]}
-      />      
+      />
 
       <Carousel
         category={dadosIniciais.categorias[4]}
-      />      
+      />
 
       <Carousel
         category={dadosIniciais.categorias[5]}
-      />      
+      />
 
       <Footer />
 
-    </div>
+    </AppWrapper>
   );
 }
 
