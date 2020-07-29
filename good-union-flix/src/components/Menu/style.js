@@ -48,13 +48,15 @@ export const ButtonLink = styled(Button)`
     }
 
     @media(max-width: 800px) {
-        position: fixed;
-        left: 0;
-        right: 0;
         bottom: 0;
+        border: 0;
+        border-radius: 0;
         background-color: var(--primary);
         color: var(--white);
         outline: 0;
+        left: 0;
+        right: 0;
         text-align: center;
+        position: fixed;
     }
 `;

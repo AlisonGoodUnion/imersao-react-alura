@@ -1,5 +1,8 @@
 # Imersão React Alura
 
+
+## URL Acess
+http://goodunionflix.vercel.app
 Projeto utilizado para armazenar as aulas de react da Alura.
 
 Local do APP: /good-union-flix
@@ -22,4 +25,5 @@ IntelliCode
     * extention do vscode para deixar mais claro as Tagged template string
     https://styled-components.com/
     npm install styled-components
-        
+
+    * https://reactrouter.com/

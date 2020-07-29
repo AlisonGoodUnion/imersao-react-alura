@@ -1,12 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 
+import Home from './pages/Home';
+import Page404 from './pages/Page404';
+import CadastroVideo from './pages/cadastro/Video';
+import CadastroCategoria from './pages/cadastro/Categoria';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+
+
+
+//file que inicializa o react
+//renderiza o react dentro do conteiner root.
+// nosso APP esta inserido ali :)
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter>
+    {/*Componente de rotas*/}
+    <Switch>
+      {/*podemos usar o exact a rota o path tem que ser exato para podermos acessar.*/}
+      <Route path="/" component={Home} exact></Route>
+      <Route path="/cadastro/video" component={CadastroVideo}></Route>
+      <Route path="/cadastro/categoria" component={CadastroCategoria}></Route>
+      {/* Se não encontrar a rota cai na ultima*/}
+      <Route component={Page404}></Route>
+    </Switch>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 

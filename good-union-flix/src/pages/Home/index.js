@@ -1,9 +1,9 @@
 import React from 'react';
-import Menu from './components/Menu';
-import dadosIniciais from './data/dados_iniciais.json'
-import BannerMain from './components/BannerMain'
-import Carousel from './components/Carousel'
-import Footer from './components/Footer'
+import Menu from '../../components/Menu'
+import dadosIniciais from '../../data/dados_iniciais.json'
+import BannerMain from '../../components/BannerMain'
+import Carousel from '../../components/Carousel'
+import Footer from '../../components/Footer'
 import styled from 'styled-components'
 
 const AppWrapper = styled.div`
@@ -13,7 +13,7 @@ background: var(--grayDark);
 //este é um component APP que é inetado lá no index.js
 // na pasta public temos o arquivo index.html
 // gerado com nosso component root.
-function App() {
+function Home() {
   return (
     //no react temos o js e nele temos o html, vai um pouco contra oq ja existe hj
     // aqui retornamos o JSX. JavaScript XML
@@ -56,4 +56,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
