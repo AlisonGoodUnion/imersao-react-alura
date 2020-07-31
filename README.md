@@ -1,20 +1,22 @@
 # Imersão React Alura
 
+    https://github.com/facebook/react
+
 
 ## URL Acess
 http://goodunionflix.vercel.app
 
 Projeto utilizado para armazenar as aulas de react da Alura.
 
-Local do APP: /good-union-flix
+## Local do APP: 
+    
+    /good-union-flix
 
-https://fonts.google.com/
-
-https://pt-br.reactjs.org/docs
-
-https://www.alura.com.br/imersao-react
-
-Criar fontes/logo: https://fontmeme.com/pt/
+## Links uteis: 
+    https://fonts.google.com/
+    https://pt-br.reactjs.org/docs
+    https://www.alura.com.br/imersao-react
+    Criar fontes/logo: https://fontmeme.com/pt/
 
 ## Dados do projeto
  * contém arquivo figma + logo.

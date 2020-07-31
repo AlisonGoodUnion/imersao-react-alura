@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom'
 
 // Tagged template string `` permitem utilizar expressões imbutidas.
 // as Tagged são do javascript e não do react
