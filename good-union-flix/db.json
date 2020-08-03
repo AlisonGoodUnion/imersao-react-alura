@@ -1,0 +1,16 @@
+{
+    "categorias": [
+        {
+            "id": 1,
+            "nome": "Youtube",
+            "descricao": "Gameplays Youtube",
+            "cor": "#c4302b"
+        },
+        {
+            "id": 2,
+            "nome": "Twitch",
+            "descricao": "Gameplays Twitch",
+            "cor": "#6441a4"
+        }
+    ]
+}
