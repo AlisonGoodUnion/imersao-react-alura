@@ -1,4 +1,4 @@
-import React, { useState } from 'react'; // devemos importar o useState do Rease
+import React, { useState, useEffect } from 'react'; // devemos importar o useState do Rease
 import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
@@ -42,6 +42,41 @@ function CadastroCategoria() {
       event.target.value,
     );
   }
+
+  // usamos ele quando queremos que algum efeito colateral ocorra.
+  // 1º Oq?,
+  // 2º Quando? apenas quando o value.nome mudar.
+
+  useEffect(() => {
+    const URL = 'http://localhost:8080/categorias';
+    // o fetch retorna uma promise utilizamos o 1º then para transformar o response em json
+    // e o segundo para exibir o objeto.
+    // utilizando o await não é preciso 2 then, mas é necessário um async.
+    fetch(URL)
+      .then(async (respostaDoServico) => {
+        const resposta = await respostaDoServico.json();
+        // passando os ... criamos uma nova referencia do objeto.
+        setCategorias([...resposta]);
+      });
+
+    /*     setTimeout(() => {
+          setCategorias([
+            ...categorias,
+            {
+              id: 1,
+              nome: 'Youtube',
+              descricao: 'Gameplays Youtube',
+              cor: '#c4302b',
+            },
+            {
+              id: 2,
+              nome: 'Twitch',
+              descricao: 'Gameplays Twitch',
+              cor: '#6441a4',
+            },
+          ]);
+        }, 2 * 1000); */
+  }, []);
 
   return (
     <PageDefault>
@@ -94,6 +129,14 @@ function CadastroCategoria() {
         </Button>
 
       </form>
+
+      {categorias.length === 0
+        && (
+          <div>
+            Loading...
+          </div>
+        )}
+
       <ul>
         {/* quando passamos o indice pra função e concatenamos na key temos diferentes
             categorias assim numca vamos ter um item repetido no aray.
