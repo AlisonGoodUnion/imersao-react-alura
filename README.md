@@ -115,3 +115,25 @@ IntelliCode
         }
 
         Cada comando que a gente executa trava o terminal, então podemos passar dois comandos e eles são executados em paralelo :) 
+
+
+## Subir o Server/Backend/API no heroku
+    https://www.heroku.com/
+    * Necessário ajustar os arquivos de scripts do package json pois os projetos js o heroku utiliza o npm start.
+
+Então temos que configurar nosso script de server para rodar o node e passar as confs de server:
+        const jsonServer = require('json-server');
+
+        const server = jsonServer.create();
+        const router = jsonServer.router('db.json');
+        const middlewares = jsonServer.defaults();
+
+        const port = process.env.PORT || 8080;
+
+        server.use(middlewares);
+        server.use(router);
+        server.listen(port, () => {
+        // eslint-disable-next-line no-console
+        console.log(`JSON Server is running in ${port}`);
+        });
+
