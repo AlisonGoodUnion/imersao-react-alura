@@ -48,7 +48,12 @@ function CadastroCategoria() {
   // 2º Quando? apenas quando o value.nome mudar.
 
   useEffect(() => {
-    const URL = 'http://localhost:8080/categorias';
+    // Caso o ambiente seja local, obtemos a url localhost, 
+    // se não pegamos a quentucha.
+    const URL = window.location.hostname.includes('localhost')
+      ? 'http://localhost:8080/categorias'
+      : 'https://goodunionflix.herokuapp.com/categorias';
+
     // o fetch retorna uma promise utilizamos o 1º then para transformar o response em json
     // e o segundo para exibir o objeto.
     // utilizando o await não é preciso 2 then, mas é necessário um async.
