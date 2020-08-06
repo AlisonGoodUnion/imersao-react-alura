@@ -79,14 +79,16 @@ const Input = styled.input`
 
 // component não inteligente, recebe a funcao onChange existente no outro arquivo.
 function FormField({
-  label, type, name, value, onChange,
+  label, type, name, value, onChange, suggestions,
 }) {
-  const filedId = `id_${name}`;
+  const fieldId = `id_${name}`;
   const isTypeTextArea = type === 'textarea';
   const tag = isTypeTextArea ? 'textarea' : 'input';
 
   /* properties utilizada para controlar o css do foco com valor */
   const hasValue = Boolean(value.length);
+  const hasSuggestions = Boolean(suggestions.length);
+  console.log('SUGESTOES', suggestions);
   return (
     <FormFieldWrapper>
       {/* State: É umas das melhores funcionaliades do React
@@ -95,21 +97,38 @@ function FormField({
         o user state nos retorna um valor e uma função, para poder alterar o estado :).
         */}
       <Label
-        htmlFor={filedId}
+        htmlFor={fieldId}
       >
         <Input
           as={tag}
-          id={filedId}
+          id={fieldId}
           type={type}
           name={name}
           value={value}
           hasValue={hasValue}
           onChange={onChange}
+          autoComplete={hasSuggestions ? 'off' : 'on'}
+          list={hasSuggestions ? `suggestionFor_${fieldId}` : undefined}
         />
         <Label.Text>
           {label}
           :
         </Label.Text>
+
+        {hasSuggestions && (
+          <datalist id={`suggestionFor_${fieldId}`}>
+            {
+              suggestions.map((suggestion) => (
+                <option
+                  value={suggestion}
+                  key={`suggestionFor_${fieldId}_option${suggestion}`}
+                >
+                  {suggestion}
+                </option>
+              ))
+            }
+          </datalist>
+        )}
       </Label>
     </FormFieldWrapper>
   );
@@ -121,6 +140,7 @@ FormField.defaultProps = {
   type: 'text',
   value: '',
   onChange: () => { },
+  suggestions: [],
 };
 
 FormField.propTypes = {
@@ -129,6 +149,7 @@ FormField.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string,
   onChange: PropTypes.func,
+  suggestions: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default FormField;

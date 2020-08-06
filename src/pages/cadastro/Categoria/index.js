@@ -3,52 +3,29 @@ import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
+import useForm from '../../../hooks/useForm';
 
 function CadastroCategoria() {
   const valoresIniciais = {
-    nome: '',
+    titulo: '',
     descricao: '',
     cor: '#f40b0b',
   };
 
-  // o [ ] antes do igual significa que estamos atribuindo esse retorn do useState
-  // ao atributo no caso [valor, funcao].
-  // entao para alterar esse nome da categoria temos que usar o setNomeCategoria.
-  // o parametro inicial do state nesse caso é o 'Filmes'
-  const [values, setValues] = useState(valoresIniciais); // nesse momento temos o [valor, funcao]
+  // Atribuição via desestruturação
+  // destructuring assignment JS
+  const { values, handleChange, clearForm } = useForm(valoresIniciais);
 
   console.log('[values]', values);
   // a sua função é determinada conforme o parâmetro que vc passa, nesse caso é um array.
   const [categorias, setCategorias] = useState([]);
-
-  function setValue(chave, valor) {
-    // a chave pode ser nome, desc, cor.
-    // passando a chave em [] ela se torna dinamica.
-    setValues({
-      ...values,
-      [chave]: valor, // se a chave vem [nome] nome: 'valor'
-    });
-  }
-
-  function handleChange(event) { // funcaoGenerica para capturar as mudanças
-    // console.log('[values]', values);
-    // alvo da ação que estamos fazendo, então qnd digitarmos,
-    // o valor vai aparecer aqui
-    // console.log('[event.target.value]', value);
-    // Então para popular o valor é necessário usar o set do state;
-    // setValues(event.target.value);
-    setValue(
-      event.target.getAttribute('name'),
-      event.target.value,
-    );
-  }
 
   // usamos ele quando queremos que algum efeito colateral ocorra.
   // 1º Oq?,
   // 2º Quando? apenas quando o value.nome mudar.
 
   useEffect(() => {
-    // Caso o ambiente seja local, obtemos a url localhost, 
+    // Caso o ambiente seja local, obtemos a url localhost,
     // se não pegamos a quentucha.
     const URL = window.location.hostname.includes('localhost')
       ? 'http://localhost:8080/categorias'
@@ -87,7 +64,7 @@ function CadastroCategoria() {
     <PageDefault>
       <h1>
         Cadastro de Categoria:
-        {values.nome}
+        {values.titulo}
       </h1>
 
       <form onSubmit={function handleSubmit(infosDoEvento) {
@@ -103,15 +80,15 @@ function CadastroCategoria() {
         setCategorias([
           ...categorias, values,
         ]);
-        setValues(valoresIniciais);
+        clearForm();
       }}
       >
 
         <FormField
           label="Nome"
           type="text"
-          name="nome"
-          value={values.nome}
+          name="titulo"
+          value={values.titulo}
           onChange={handleChange}
         />
         <FormField
@@ -147,8 +124,8 @@ function CadastroCategoria() {
             categorias assim numca vamos ter um item repetido no aray.
         */}
         {categorias.map((categoria) => (
-          <li key={`${categoria.nome}`}>
-            {categoria.nome}
+          <li key={`${categoria.titulo}`}>
+            {categoria.titulo}
           </li>
         ))}
       </ul>

@@ -1,7 +1,7 @@
 import React from 'react';
+import styled, { css } from 'styled-components';
 import Menu from '../Menu';
 import Footer from '../Footer';
-import styled from 'styled-components';
 
 const Main = styled.main`
     background-color: var(--black);
@@ -10,18 +10,22 @@ const Main = styled.main`
     padding-top: 50px;
     padding-left: 5%;
     padding-right: 5%;
+    ${({ paddingAll }) => css`
+      padding: ${paddingAll};
+    `}
 `;
 
-function PageDefault({ children }) { // ao inves de obter as props podemos usar direto a propriedade que necessitamos.
-    return (
-        <> {/*no react chamamos essa tag morta de fragmento*/}
-            <Menu></Menu>
-            <Main>
-                {children}
-            </Main>
-            <Footer></Footer>
-        </>
-    );
-};
+function PageDefault({ children, paddingAll }) { // ao inves de obter as props podemos usar direto a propriedade que necessitamos.
+  /* no react chamamos essa tag morta de fragmento */
+  return (
+    <>
+      <Menu />
+      <Main paddingAll={paddingAll}>
+        {children}
+      </Main>
+      <Footer />
+    </>
+  );
+}
 
 export default PageDefault;

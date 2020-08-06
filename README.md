@@ -10,17 +10,24 @@ http://goodunionflix.vercel.app
 * Back: Heroku
 https://goodunionflix.herokuapp.com/categorias
 
+* 404
+http://localhost:3000/cadastro/2
+
+
 ## Local do APP: 
     
 * npm run dev
-http://localhost:3000
-http://localhost:8080/categorias
+    http://localhost:3000
+    http://localhost:8080/categorias
+    http://localhost:8080/videos
 
-## Links uteis: 
+## Links uteis:
+* 
     https://fonts.google.com/
     https://pt-br.reactjs.org/docs
     https://www.alura.com.br/imersao-react
-    Criar fontes/logo: https://fontmeme.com/pt/
+    Criar fontes/logo:
+    https://fontmeme.com/pt/
 
 ## Dados do projeto
  * contém arquivo figma + logo. https://www.figma.com/
@@ -113,10 +120,18 @@ IntelliCode
 
         npm install --save-dev concurrently
 
-        Ex:. 
+        Comando para subir tanto o front qquanto o back
+        Ex:. no package.json
+        command dev executa com a lib concurrently o start do front e o ./server do node.
         "scripts": {
-            "dev": "concurrently \"react-scripts start\" \"npm run server\"",
-        }
+            "start": "node ./server.js",
+            "dev": "concurrently \"react-scripts start\" \"node ./server.js\"",
+            "build": "react-scripts build",
+            "test": "react-scripts test",
+            "eject": "react-scripts eject",
+            "server:static": "json-server --watch ./src/data/db.json --port 8080",
+            "server": "node ./server.js"
+        },
 
         Cada comando que a gente executa trava o terminal, então podemos passar dois comandos e eles são executados em paralelo :) 
 
@@ -140,3 +155,9 @@ Então temos que configurar nosso script de server para rodar o node e passar as
         // eslint-disable-next-line no-console
         console.log(`JSON Server is running in ${port}`);
         });
+
+
+## JSON-SERVER: Vinculando objetos com _embed
+
+    Neste exemplo buscamos as categorias e seus vinculos.
+    http://localhost:8080/categorias?_embed=videos
